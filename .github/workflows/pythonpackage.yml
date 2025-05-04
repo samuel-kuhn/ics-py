@@ -86,9 +86,3 @@ jobs:
 
       - name: Build (again) the package
         run: python -m build
-
-      - name: Publish package 📦 to PyPI 🎉
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
