@@ -1,6 +1,6 @@
 import importlib.metadata
-import sys
 import os
+import sys
 
 import ics
 
