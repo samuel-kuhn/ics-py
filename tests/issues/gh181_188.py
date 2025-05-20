@@ -119,7 +119,9 @@ def test_issue_188_timezone_dropped():
     pacific = Timezone.from_tzid("America/Los_Angeles")
     assert pacific.tzid.endswith("America/Los_Angeles")
 
-    event1 = Event(begin=datetime(2014, 1, 1, 0, 0, 0, tzinfo=gettz("America/Los_Angeles")))
+    event1 = Event(
+        begin=datetime(2014, 1, 1, 0, 0, 0, tzinfo=gettz("America/Los_Angeles"))
+    )
     event1.dtstamp = event1.dtstamp.replace(microsecond=0)
     ser1 = Calendar(events=[event1]).serialize()
     assert "DTSTART:20140101T000000Z" not in ser1
