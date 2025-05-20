@@ -11,6 +11,7 @@ from hypothesis.strategies import characters, text
 from ics.contentline import *
 from ics.contentline.container import DEFAULT_LINE_WRAP, Patterns, escape_param
 from ics.contentline.parser import ContentLineParser
+from ics.types import ExtraParams
 from tests.contentline.examples import CONTENTLINE_EXAMPLES
 
 CONTROL = [chr(i) for i in range(ord(" ")) if i != ord("\t")] + [chr(0x7F)]
@@ -203,7 +204,7 @@ def test_any_name_params_value_recode(
         quote_escape_param(p2value2),
         value,
     )
-    cl = ContentLine(name, {param1: [p1value], param2: [p2value1, p2value2]}, value)
+    cl = ContentLine(name, ExtraParams({param1: [p1value], param2: [p2value1, p2value2]}), value)
     assert_parses_to(raw, cl)
 
 
