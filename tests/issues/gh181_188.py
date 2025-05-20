@@ -115,7 +115,8 @@ def test_issue_188_timezone_dropped():
         "DTSTART;TZID=Europe/Berlin:20200121T070000" in Calendar(fixture3).serialize()
     )
 
-    pacific = Timezone.from_tzid("US/Pacific")
+    # America/Los_Angeles is the modern standard name for previously US/Pacific
+    pacific = Timezone.from_tzid("America/Los_Angeles")
     assert pacific.tzid.endswith("America/Los_Angeles")
 
     event1 = Event(begin=datetime(2014, 1, 1, 0, 0, 0, tzinfo=gettz("US/Pacific")))
